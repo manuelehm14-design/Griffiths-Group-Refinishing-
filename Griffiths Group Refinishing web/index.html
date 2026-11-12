@@ -26,6 +26,7 @@
         }
     </script>
     <style>
+        /* Oculta la barra de scroll en el slider pero mantiene el funcionamiento táctil */
         input[type=range]::-webkit-slider-thumb {
             appearance: none;
             width: 40px;
@@ -45,7 +46,7 @@
         <p><i class="fas fa-map-marker-alt mr-2 animate-bounce"></i> Professional surface restoration in York, PA & Surrounding Areas</p>
     </div>
 
-    <!-- Header / Nav -->
+    <!-- Header / Nav (Glassmorphism) -->
     <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100 transition-all duration-300">
         <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
@@ -61,13 +62,14 @@
         </div>
     </header>
 
-    <!-- Floating Call Button -->
+    <!-- Floating Call Button (Mobile & Desktop) -->
     <a href="tel:7177474361" class="fixed bottom-6 right-6 bg-brand-yellow text-brand-blue w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-2xl z-50 transform hover:scale-110 transition-all duration-300 border-4 border-white animate-pulse">
         <i class="fas fa-phone-alt"></i>
     </a>
 
     <!-- Hero Section -->
     <section class="relative bg-brand-blue text-white py-20 px-4 text-center overflow-hidden">
+        <!-- Decoración de fondo -->
         <div class="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] pointer-events-none"></div>
         <div class="absolute -top-24 -right-24 w-96 h-96 bg-brand-green rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob pointer-events-none"></div>
         
@@ -109,18 +111,26 @@
             <p class="text-gray-500 mb-10 max-w-xl mx-auto">Slide to see how we restore old, damaged surfaces to a fresh, factory-new finish without the cost of a full remodel.</p>
         </div>
         
+        <!-- Slider Container (RESTORED TO ORIGINAL antes.jpg AND despues.jpg) -->
         <div data-aos="zoom-in" class="relative w-full max-w-3xl mx-auto bg-gray-200 rounded-2xl overflow-hidden shadow-2xl aspect-[4/3] border-4 border-white group">
+            
+            <!-- BEFORE IMAGE -->
             <img src="antes.jpg" alt="Before Refinishing" class="absolute inset-0 w-full h-full object-cover">
+            
+            <!-- AFTER IMAGE -->
             <img id="after-image" src="despues.jpg" alt="After Refinishing" class="absolute inset-0 w-full h-full object-cover" style="clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);">
             
+            <!-- Slider Input -->
             <input type="range" min="0" max="100" value="50" class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-20" oninput="document.getElementById('after-image').style.clipPath = `polygon(${this.value}% 0, 100% 0, 100% 100%, ${this.value}% 100%)`; document.getElementById('slider-line').style.left = `${this.value}%`;">
             
+            <!-- Drag Line -->
             <div id="slider-line" class="absolute top-0 bottom-0 w-1 bg-white shadow-[0_0_15px_rgba(0,0,0,0.8)] z-10 left-1/2 -ml-[2px] pointer-events-none transition-all duration-75">
                 <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-brand-blue text-white rounded-full p-3 shadow-xl border-2 border-white">
                     <i class="fas fa-arrows-alt-h text-xl"></i>
                 </div>
             </div>
 
+            <!-- Labels -->
             <span class="absolute top-4 left-4 bg-brand-red/90 backdrop-blur text-white px-4 py-1 text-sm font-bold rounded shadow-lg z-10 pointer-events-none tracking-wider">BEFORE</span>
             <span class="absolute top-4 right-4 bg-brand-green/90 backdrop-blur text-white px-4 py-1 text-sm font-bold rounded shadow-lg z-10 pointer-events-none tracking-wider">AFTER</span>
         </div>
@@ -132,8 +142,9 @@
         </div>
     </section>
 
-    <!-- Services Grid (NUEVO DISEÑO CON CARRUSEL INTERNO) -->
+    <!-- Services Grid -->
     <section class="bg-brand-blue py-20 px-4 relative overflow-hidden">
+        <!-- Decoración diagonal -->
         <div class="absolute top-0 left-0 w-full h-16 bg-gray-50" style="clip-path: polygon(0 0, 100% 0, 100% 0, 0 100%);"></div>
         
         <div class="max-w-6xl mx-auto relative z-10">
@@ -142,7 +153,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Bathtubs -->
                 <div onclick="openService('bathtubs')" class="relative h-64 bg-black/40 border border-white/20 rounded-2xl text-center shadow-lg hover:shadow-2xl transition-all duration-300 group cursor-pointer overflow-hidden" data-aos="fade-up" data-aos-delay="100">
-                    <img id="bg-bathtubs" src="https://placehold.co/600x400/1a365d/ffffff?text=Working+on+it..." class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-60 card-bg-transition">
+                    <img id="bg-bathtubs" src="bath-antes.jpg" class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-60 card-bg-transition">
                     <div class="absolute inset-0 flex flex-col items-center justify-center p-4">
                         <i class="fas fa-bath text-5xl mb-4 text-brand-green group-hover:scale-110 transition-transform drop-shadow-md"></i>
                         <h3 class="font-bold text-xl text-white drop-shadow-md">Bathtubs</h3>
@@ -152,7 +163,7 @@
 
                 <!-- Countertops -->
                 <div onclick="openService('countertops')" class="relative h-64 bg-black/40 border border-white/20 rounded-2xl text-center shadow-lg hover:shadow-2xl transition-all duration-300 group cursor-pointer overflow-hidden" data-aos="fade-up" data-aos-delay="200">
-                    <img id="bg-countertops" src="https://placehold.co/600x400/1a365d/ffffff?text=Working+on+it..." class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-60 card-bg-transition">
+                    <img id="bg-countertops" src="counter-antes.jpg" class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-60 card-bg-transition">
                     <div class="absolute inset-0 flex flex-col items-center justify-center p-4">
                         <i class="fas fa-sink text-5xl mb-4 text-brand-yellow group-hover:scale-110 transition-transform drop-shadow-md"></i>
                         <h3 class="font-bold text-xl text-white drop-shadow-md">Countertops</h3>
@@ -172,7 +183,7 @@
 
                 <!-- Tub Combos -->
                 <div onclick="openService('combos')" class="relative h-64 bg-black/40 border border-white/20 rounded-2xl text-center shadow-lg hover:shadow-2xl transition-all duration-300 group cursor-pointer overflow-hidden" data-aos="fade-up" data-aos-delay="100">
-                    <img id="bg-combos" src="https://placehold.co/600x400/1a365d/ffffff?text=Working+on+it..." class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-60 card-bg-transition">
+                    <img id="bg-combos" src="combo-antes-1.jpg" class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-60 card-bg-transition">
                     <div class="absolute inset-0 flex flex-col items-center justify-center p-4">
                         <i class="fas fa-shower text-5xl mb-4 text-brand-yellow group-hover:scale-110 transition-transform drop-shadow-md"></i>
                         <h3 class="font-bold text-xl text-white drop-shadow-md">Tub Combos</h3>
@@ -205,7 +216,7 @@
         <div class="absolute bottom-0 left-0 w-full h-16 bg-gray-50" style="clip-path: polygon(0 100%, 100% 0, 100% 100%, 0 100%);"></div>
     </section>
 
-    <!-- Modal de Detalles del Servicio (NUEVO) -->
+    <!-- Modal de Detalles del Servicio -->
     <div id="service-modal" class="fixed inset-0 z-[100] hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
         <div class="bg-white rounded-3xl max-w-4xl w-full overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300" id="modal-panel">
             <div class="relative bg-brand-blue p-6 text-center border-b-4 border-brand-green">
@@ -223,7 +234,9 @@
         <div data-aos="zoom-in" class="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row border border-gray-100">
             
             <div class="bg-brand-red text-white p-10 md:w-2/5 flex flex-col justify-center relative overflow-hidden">
+                <!-- Decoración circular -->
                 <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-white opacity-10 rounded-full"></div>
+                
                 <h2 class="text-4xl font-black mb-4 relative z-10">Refresh Your Property For Less</h2>
                 <p class="mb-8 opacity-90 relative z-10 text-lg">Call or email today to discuss your next refinishing project.</p>
                 <div class="space-y-6 font-bold relative z-10">
@@ -234,6 +247,7 @@
                             <p class="text-xl">(717) 747-4361</p>
                         </div>
                     </div>
+                    
                     <p class="text-sm break-all pt-2"><i class="fas fa-envelope mr-3"></i> griffithsgroupresurfacing@gmail.com</p>
                 </div>
             </div>
@@ -282,6 +296,7 @@
                     <p id="status-msg" class="text-sm text-center font-bold hidden mt-4 p-3 rounded-xl"></p>
                 </form>
             </div>
+            
         </div>
     </section>
 
@@ -299,12 +314,20 @@
         <p>&copy; 2026 Griffiths Group Refinishing. All Rights Reserved.</p>
     </footer>
 
+    <!-- Script para activar Animaciones AOS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 800, once: true, offset: 100 });
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+    </script>
 
-        // EmailJS Config
+    <!-- Script de configuración y envío de EmailJS -->
+    <script>
         emailjs.init("JWCqoTWeGkJuALGNR");
+
         document.getElementById('quote-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const btn = e.target.querySelector('button');
@@ -323,7 +346,7 @@
                 reply_to: 'griffithsgroupresurfacing@gmail.com'
             };
            
-            emailjs.send("service_6icji4f", "template_1rat", templateParams)
+            emailjs.send("service_6icji4f", "template_1rnzrat", templateParams)
                 .then(function() {
                     statusMsg.innerText = "Message sent successfully! We'll contact you soon.";
                     statusMsg.classList.remove('hidden', 'text-red-500', 'bg-red-100', 'bg-blue-100', 'text-brand-blue');
@@ -348,13 +371,13 @@
         const servicesData = {
             bathtubs: {
                 title: "Bathtub Refinishing",
-                ready: false, // CAMBIA A TRUE CUANDO TENGAS FOTOS
-                images: ["bath-antes.jpg", "bath-despues.jpg"], // PON LOS NOMBRES DE TUS FOTOS AQUÍ
+                ready: true, 
+                images: ["bath-antes.jpg", "bath-despues.jpg"], 
                 description: "We completely restore your old, chipped, or outdated bathtub to a factory-new finish in just one day."
             },
             countertops: {
                 title: "Countertop Resurfacing",
-                ready: false,
+                ready: true,
                 images: ["counter-antes.jpg", "counter-despues.jpg"],
                 description: "Upgrade your kitchen or bathroom counters with a durable, modern finish at a fraction of the cost of replacement."
             },
@@ -366,8 +389,15 @@
             },
             combos: {
                 title: "Tub Combos",
-                ready: false,
-                images: [],
+                ready: true,
+                images: [
+                    "combo-antes-1.jpg", 
+                    "combo-despues-1.jpg", 
+                    "combo-antes-2.jpg", 
+                    "combo-despues-2.jpg", 
+                    "combo-antes-3.jpg", 
+                    "combo-despues-3.jpg"
+                ],
                 description: "Full fiberglass and acrylic tub-shower combo refinishing to eliminate cracks and discoloration."
             },
             tile: {
@@ -392,22 +422,26 @@
                     const imgEl = document.getElementById('bg-' + key);
                     if (imgEl) {
                         let currentSrc = imgEl.getAttribute('src');
-                        let currentIndex = data.images.indexOf(currentSrc);
-                        // Si no está en el array (ej. placeholder), empieza en 0
+                        // Extraemos solo el nombre del archivo si la URL viene absoluta
+                        const filename = currentSrc.substring(currentSrc.lastIndexOf('/') + 1);
+                        
+                        let currentIndex = data.images.indexOf(filename);
                         if (currentIndex === -1) currentIndex = 0; 
                         
                         let nextIndex = (currentIndex + 1) % data.images.length;
                         imgEl.src = data.images[nextIndex];
                     }
                 } else if (data.ready && data.images.length === 1) {
-                    // Si solo hay una foto, déjala fija
                     const imgEl = document.getElementById('bg-' + key);
-                    if (imgEl && imgEl.getAttribute('src') !== data.images[0]) {
-                        imgEl.src = data.images[0];
+                    if (imgEl) {
+                        const filename = imgEl.getAttribute('src').substring(imgEl.getAttribute('src').lastIndexOf('/') + 1);
+                        if (filename !== data.images[0]) {
+                            imgEl.src = data.images[0];
+                        }
                     }
                 }
             }
-        }, 3000); // 3000 = 3 segundos
+        }, 3000); 
 
         // Función para abrir el Modal
         function openService(key) {
@@ -419,10 +453,9 @@
             title.innerText = data.title;
 
             if (data.ready && data.images.length > 0) {
-                // TIENE FOTOS: Muestra la galería
                 let imagesHtml = '';
                 data.images.forEach((img, index) => {
-                    let label = index === 0 ? "BEFORE" : "AFTER"; // Etiqueta básica
+                    let label = index % 2 === 0 ? "BEFORE" : "AFTER";
                     imagesHtml += `
                     <div class="relative group rounded-xl overflow-hidden shadow-lg border-2 border-gray-100">
                         <img src="${img}" class="w-full h-64 md:h-80 object-cover hover:scale-105 transition-transform duration-500">
@@ -440,7 +473,6 @@
                     </button>
                 `;
             } else {
-                // NO TIENE FOTOS: Muestra el mensaje de "Trabajando en ello"
                 body.innerHTML = `
                     <div class="py-12 px-4">
                         <div class="w-24 h-24 bg-brand-blue/10 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -455,7 +487,6 @@
                 `;
             }
 
-            // Animación de entrada
             modal.classList.remove('hidden');
             setTimeout(() => {
                 modal.classList.remove('opacity-0');
